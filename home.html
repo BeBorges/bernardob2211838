@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+</head>
+
+<body>
+  <script src="script.js"></script>
+
+  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bernardo Borges Vieira</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+</head>
+<body>
+	<header>
+		<h1>Bernardo Borges Vieira - Copa do Mundo</h1>
+	</header>
+	<main>
+		<p>  Bem-vindo à minha página dedicada à Copa do Mundo!</p>
+		<p>  A Copa do Mundo é um evento mundial que acontece a cada 4 anos e reúne as melhores seleções de futebol do mundo. Eu sou um grande fã de futebol e não poderia deixar de criar uma página para compartilhar minha paixão pelo evento.</p>
+		<p>  Nesta página, você encontrará informações sobre a história da Copa do Mundo, curiosidades sobre as seleções e jogadores, além de análises das partidas mais importantes.</p>
+		<p>Para saber mais sobre o evento, confira o site oficial da <a href="https://www.fifa.com/worldcup/" target="_blank" class="link">FIFA</a>.</p>
+		<img width="400px" style="display: block; margin: 0 auto;"src="https://ichef.bbci.co.uk/news/800/cpsprodpb/a617/live/4c8ad930-65d9-11ed-a6af-4f332dcec329.jpg">
+		<h3>Curiosidades sobre a Copa do Mundo</h3>
+<ol class="ordered-list">
+    <ul>
+      {% for curiosity in curiosities %}
+        <li>{{ curiosity.title }}</li>
+        <li>{{ curiosity.info_1 }}</li>
+        <li>{{ curiosity.info_2 }}</li>
+        <li>{{ curiosity.info_3 }}</li>
+        <a href="{% url 'edit_curiosity' curiosity.pk %}">Editar</a>
+        <a href="{% url 'delete_curiosity' curiosity.pk %}">Remover</a>
+        </li>
+      {% endfor %}
+    </ul>
+</ol>
+ 
+        <table>
+  <caption>Maiores vencedores da Copa do Mundo</caption>
+  <thead>
+    <tr>
+      <th>Posição</th>
+      <th>País</th>
+      <th>Número de títulos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1º</td>
+      <td>Brasil</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>2º</td>
+      <td>Alemanha</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>3º</td>
+      <td>Itália</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+
+    <h3>Maiores artilheiros em Copas do Mundo</h3>
+<ul>
+{% for top_scorer in top_scorers %}
+    <li>{{ top_scorer.title }}</li>
+    <ul>
+        <li>{{ top_scorer.info_1 }}</li>
+        <li>{{ top_scorer.info_2 }}</li>
+        <li>{{ top_scorer.info_3 }}</li>
+        <a href="{% url 'edit_top_scorer' top_scorer.pk %}">Editar</a>
+        <a href="{% url 'delete_top_scorer' top_scorer.pk %}">Remover</a>
+        </li>
+  {% endfor %}
+</ul>
+    
+   
